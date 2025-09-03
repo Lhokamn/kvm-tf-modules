@@ -61,12 +61,8 @@ resource "libvirt_domain" "this" {
     volume_id = var.volume_id
   }
 
-  dynamic "cloudinit" {
-    for_each = var.cloudinit_id != null ? [1] : []
-    content {
-      volume_id = var.cloudinit_id
-    }
-  }
+  cloudinit = var.cloudinit_id
+
 
   dynamic "network_interface" {
     for_each = var.networks
