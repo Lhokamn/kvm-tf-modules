@@ -15,10 +15,14 @@ provider "libvirt" {
   uri = "qemu:///system"
 }
 
+locals {
+  domain = "${var.name}.net" 
+}
+
 resource "libvirt_network" "this" {
   name      = var.name
   mode      = var.mode
-  domain    = var.domain
+  domain    = local.domain
   addresses = var.addresses
 
   dhcp {
@@ -38,11 +42,6 @@ variable "mode" {
   description = "Mode du réseau (nat, isolated, etc.)"
   type        = string
   default     = "nat"
-}
-
-variable "domain" {
-  description = "Nom de domaine du réseau"
-  type        = string
 }
 
 variable "addresses" {
