@@ -1,3 +1,12 @@
+terraform {
+  required_providers {
+    libvirt = {
+      source = "dmacvicar/libvirt"
+    }
+  }
+}
+
+
 locals {
   domain = "${var.name}.net" 
 }
