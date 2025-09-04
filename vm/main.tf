@@ -7,47 +7,47 @@ terraform {
 }
 
 variable "name" {
-  description = "Nom de la VM"
+  description = "Name of the virtual machine"
   type        = string
 }
 
 variable "vcpu" {
-  description = "Nombre de vCPUs"
+  description = "Number of virtual CPUs"
   type        = number
   default     = 2
 }
 
 variable "memory" {
-  description = "Mémoire en Mo"
+  description = "Amount of RAM in megabytes"
   type        = number
   default     = 2048
 }
 
 variable "volume_id" {
-  description = "ID du volume disque principal"
+  description = "ID of the main disk volume"
   type        = string
 }
 
 variable "cloudinit_id" {
-  description = "ID du disque cloud-init"
+  description = "ID of the cloud-init ISO disk"
   type        = string
   default     = null
 }
 
 variable "networks" {
-  description = "Liste des network_ids à attacher"
+  description = "List of network IDs to attach to the VM"
   type        = list(string)
   default     = []
 }
 
 variable "autostart" {
-  description = "Démarrage automatique de la VM"
+  description = "Whether to autostart the VM with the host"
   type        = bool
   default     = false
 }
 
 variable "graphics_enabled" {
-  description = "Activer la console VNC (true/false)"
+  description = "Enable VNC graphics console (true/false)"
   type        = bool
   default     = true
 }
@@ -62,7 +62,6 @@ resource "libvirt_domain" "this" {
   }
 
   cloudinit = var.cloudinit_id
-
 
   dynamic "network_interface" {
     for_each = var.networks
@@ -91,6 +90,6 @@ resource "libvirt_domain" "this" {
 }
 
 output "id" {
-  description = "ID de la VM"
+  description = "ID of the created VM"
   value       = libvirt_domain.this.id
 }
