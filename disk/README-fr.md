@@ -1,9 +1,3 @@
-
----
-
-## 📄 `modules/disk/README-fr.md` (🇫🇷 Version française)
-
-```markdown
 # Module `disk`
 
 Ce module permet de créer un **volume libvirt** en clonant une image de base existante (`base_volume`).  
