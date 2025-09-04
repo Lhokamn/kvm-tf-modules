@@ -6,30 +6,29 @@ terraform {
   }
 }
 
-
 variable "name" {
-  description = "Nom du disque à créer"
+  description = "Name of the volume to be created"
   type        = string
 }
 
 variable "pool" {
-  description = "Nom du pool libvirt"
+  description = "Name of the libvirt storage pool"
   type        = string
   default     = "default"
 }
 
 variable "base_volume_id" {
-  description = "ID de l'image source utilisée comme base"
+  description = "ID of the base image volume used as a source"
   type        = string
 }
 
 variable "size" {
-  description = "Taille du disque en octets"
+  description = "Size of the new volume (in gigabytes)"
   type        = number
 }
 
 locals {
-  size = var.size * 1024 * 1024 * 1024 
+  size = var.size * 1024 * 1024 * 1024
 }
 
 resource "libvirt_volume" "this" {
@@ -40,6 +39,6 @@ resource "libvirt_volume" "this" {
 }
 
 output "id" {
-  description = "ID du disque créé"
+  description = "ID of the created libvirt volume"
   value       = libvirt_volume.this.id
 }
