@@ -1,34 +1,34 @@
-# 🧱 Terraform Modules for KVM with Libvirt
+# 🧱 Modules Terraform pour KVM avec Libvirt
 
-Reusable and modular **Terraform components** to create, manage, and provision **KVM virtual machines** using the `libvirt` provider.
+Composants **Terraform réutilisables et modulaires** permettant de créer, gérer et provisionner des **machines virtuelles KVM** à l’aide du provider `libvirt`.
 
-> Created with ❤️ by [@Lhokamn](https://github.com/Lhokamn)
-
----
-
-## 🧰 Available Modules
-
-| Module     | Description |
-|------------|-------------|
-| `network`  | Create a libvirt network (NAT, isolated, etc.) |
-| `pool`     | Define a libvirt storage pool |
-| `image`    | Download a base image (e.g., Ubuntu, Debian) |
-| `disk`     | Create a VM disk from a base image |
-| `cloudinit`| Generate a cloud-init ISO from user-data and network-data |
-| `vm`       | Create a libvirt virtual machine |
+> Créé avec ❤️ par [@Lhokamn](https://github.com/Lhokamn)
 
 ---
 
-## 🚀 Example: Full Infrastructure
+## 🧰 Modules disponibles
 
-This example demonstrates how to use the modules together to deploy a complete Ubuntu VM on KVM with:
+| Module      | Description |
+|-------------|-------------|
+| `network`   | Crée un réseau libvirt (NAT, isolé, etc.) |
+| `pool`      | Déclare un pool de stockage libvirt |
+| `image`     | Télécharge une image de base (ex : Ubuntu, Debian) |
+| `disk`      | Crée un disque VM basé sur une image |
+| `cloudinit` | Génère un ISO cloud-init à partir des fichiers user-data et network-data |
+| `vm`        | Crée une machine virtuelle avec libvirt |
 
-- NAT network
-- Custom storage pool
-- Downloaded image
-- Disk overlay
-- Cloud-init configuration
-- Fully provisioned VM with 4 vCPUs and 8GB RAM
+---
+
+## 🚀 Exemple : Infrastructure complète
+
+Cet exemple montre comment utiliser tous les modules ensemble pour déployer une machine virtuelle Ubuntu complète avec :
+
+- Réseau NAT
+- Pool de stockage personnalisé
+- Image distante téléchargée
+- Overlay disque
+- Configuration cloud-init
+- VM avec 4 vCPU et 8 Go de RAM
 
 ```hcl
 terraform {
@@ -109,20 +109,20 @@ module "ubuntu_vm" {
 }
 ```
 
-# 📂 Folder structure
+# 📂 Structure des dossiers
 
 ```bash
 .
-├── network/       # Network definition
-├── pool/          # Storage pool definition
-├── image/         # Download base image
-├── disk/          # Create persistent disk
-├── cloudinit/     # Cloud-init ISO generator
-├── vm/            # Final virtual machine
-└── README.md      # You're here!
+├── network/       # Définition des réseaux
+├── pool/          # Définition des pools de stockage
+├── image/         # Téléchargement des images distantes
+├── disk/          # Création de disques persistants
+├── cloudinit/     # Génération d'ISO cloud-init
+├── vm/            # Création de la VM finale
+└── README.md      # Vous êtes ici !
 ```
 
-# ☕ Support my work
-if you find this useful, you can support me here
+# ☕ Soutenez mon travail
+Si vous trouvez ce projet utile, vous pouvez me soutenir ici :
 
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/E1E61C7LNR)
