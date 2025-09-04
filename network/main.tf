@@ -6,9 +6,8 @@ terraform {
   }
 }
 
-
 locals {
-  domain = "${var.name}.net" 
+  domain = "${var.name}.net"
 }
 
 resource "libvirt_network" "this" {
@@ -24,35 +23,35 @@ resource "libvirt_network" "this" {
   autostart = var.autostart
 }
 
-
 variable "name" {
-  description = "Nom du réseau"
+  description = "Name of the network"
   type        = string
 }
 
 variable "mode" {
-  description = "Mode du réseau (nat, isolated, etc.)"
+  description = "Mode of the network (e.g., nat, isolated)"
   type        = string
   default     = "nat"
 }
 
 variable "addresses" {
-  description = "Liste des plages d'adresses"
+  description = "List of address ranges (CIDR format)"
   type        = list(string)
 }
 
 variable "dhcp_enabled" {
-  description = "Activer DHCP"
+  description = "Enable DHCP on the network"
   type        = bool
   default     = true
 }
 
 variable "autostart" {
-  description = "Démarrage automatique"
+  description = "Start the network automatically on host boot"
   type        = bool
   default     = true
 }
 
 output "network_id" {
-  value = libvirt_network.this.id
+  description = "ID of the created libvirt network"
+  value       = libvirt_network.this.id
 }
