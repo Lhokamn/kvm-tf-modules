@@ -6,20 +6,19 @@ terraform {
   }
 }
 
-
 variable "name" {
-  description = "Nom du pool libvirt"
+  description = "Name of the libvirt pool"
   type        = string
 }
 
 variable "type" {
-  description = "Type du pool (ex: dir, logical, zfs, netfs...)"
+  description = "Type of the pool (e.g., dir, logical, zfs, netfs, etc.)"
   type        = string
   default     = "dir"
 }
 
 variable "path" {
-  description = "Chemin sur le disque pour le pool (obligatoire pour type = dir)"
+  description = "Filesystem path for the pool (mandatory for type = dir)"
   type        = string
 }
 
@@ -30,11 +29,11 @@ resource "libvirt_pool" "this" {
 }
 
 output "name" {
+  description = "Name of the created libvirt pool"
   value       = libvirt_pool.this.name
-  description = "Nom du pool créé"
 }
 
 output "id" {
+  description = "ID of the created libvirt pool"
   value       = libvirt_pool.this.id
-  description = "ID du pool"
 }
