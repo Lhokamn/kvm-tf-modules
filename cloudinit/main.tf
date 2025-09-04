@@ -3,31 +3,34 @@ terraform {
     libvirt = {
       source = "dmacvicar/libvirt"
     }
+    template = {
+      source = "hashicorp/template"
+    }
   }
 }
 
 variable "name" {
-  description = "Nom du disque cloud-init (ex: debian-cloudinit.iso)"
+  description = "Name of the cloud-init disk (e.g. debian-cloudinit.iso)"
   type        = string
 }
 
 variable "ssh_key" {
-  description = "Contenu de la clé publique SSH à injecter"
+  description = "Content of the public SSH key to inject"
   type        = string
 }
 
 variable "user_data_template" {
-  description = "Chemin vers le template user-data (cloud-init)"
+  description = "Path to the user-data cloud-init template"
   type        = string
 }
 
 variable "network_config_file" {
-  description = "Chemin vers le fichier de configuration réseau (cloud-init)"
+  description = "Path to the network configuration file for cloud-init"
   type        = string
 }
 
 variable "pool" {
-  description = "Nom du pool Libvirt pour stocker le disque"
+  description = "Libvirt pool where the cloud-init disk will be stored"
   type        = string
   default     = "default"
 }
@@ -48,6 +51,6 @@ resource "libvirt_cloudinit_disk" "this" {
 }
 
 output "id" {
-  description = "ID du disque cloud-init généré"
+  description = "ID of the generated cloud-init disk"
   value       = libvirt_cloudinit_disk.this.id
 }
