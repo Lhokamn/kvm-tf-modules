@@ -6,25 +6,24 @@ terraform {
   }
 }
 
-
 variable "name" {
-  description = "Nom de l'image (volume téléchargé)"
+  description = "Name of the image volume to be created"
   type        = string
 }
 
 variable "pool" {
-  description = "Nom du pool libvirt"
+  description = "Name of the libvirt storage pool"
   type        = string
   default     = "default"
 }
 
 variable "source_url" {
-  description = "URL distante de l'image (qcow2)"
+  description = "Remote URL of the image to download (e.g. qcow2)"
   type        = string
 }
 
 variable "format" {
-  description = "Format du volume (qcow2, raw, etc.)"
+  description = "Format of the volume (e.g. qcow2, raw)"
   type        = string
   default     = "qcow2"
 }
@@ -37,5 +36,6 @@ resource "libvirt_volume" "this" {
 }
 
 output "id" {
-  value = libvirt_volume.this.id
+  description = "ID of the created image volume"
+  value       = libvirt_volume.this.id
 }
