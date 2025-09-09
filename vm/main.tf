@@ -46,6 +46,13 @@ variable "autostart" {
   default     = false
 }
 
+variable "virt_type" {
+  description = "Type of virtualization (e.g. kvm, qemu, xen)"
+  type        = string
+  default     = "kvm"
+}
+
+
 variable "graphics_enabled" {
   description = "Enable VNC graphics console (true/false)"
   type        = bool
@@ -64,7 +71,7 @@ resource "libvirt_domain" "this" {
     }
   }
 
-
+  virt_type = var.virt_type
   cloudinit = var.cloudinit_id
 
   dynamic "network_interface" {
