@@ -42,3 +42,8 @@ output "id" {
   description = "ID of the created libvirt volume"
   value       = libvirt_volume.this.id
 }
+
+output "name" {
+  description = "name of the created libvirt volume"
+  value       = libvirt_volume.this.name
+}
