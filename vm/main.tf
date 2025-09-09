@@ -23,9 +23,9 @@ variable "memory" {
   default     = 2048
 }
 
-variable "volume_id" {
-  description = "ID of the main disk volume"
-  type        = string
+variable "volumes" {
+  description = "List of disk volume IDs to attach"
+  type        = list(string)
 }
 
 variable "cloudinit_id" {
@@ -57,9 +57,13 @@ resource "libvirt_domain" "this" {
   vcpu   = var.vcpu
   memory = var.memory
 
-  disk {
-    volume_id = var.volume_id
+  dynamic "disk" {
+    for_each = var.volumes
+    content {
+      volume_id = disk.value
+    }
   }
+
 
   cloudinit = var.cloudinit_id
 
