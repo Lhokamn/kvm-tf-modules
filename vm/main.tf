@@ -71,7 +71,7 @@ resource "libvirt_domain" "this" {
     }
   }
 
-  virt_type = var.virt_type
+  type = var.virt_type
   cloudinit = var.cloudinit_id
 
   dynamic "network_interface" {
